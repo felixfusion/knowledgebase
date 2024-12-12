@@ -1,6 +1,6 @@
 ---
 icon: hand-wave
-cover: https://gitbookio.github.io/onboarding-template-images/header.png
+cover: .gitbook/assets/333.png
 coverY: 0
 layout:
   cover:
@@ -20,10 +20,39 @@ layout:
 
 # Welcome
 
-Welcome to the GitBook Starter Template! Here you'll get an overview of all the amazing features GitBook offers to help you build beautiful, interactive documentation  &#x20;
+Welcome to the **FelixFusion Help Center**! Here, you'll find everything you need to get started with FelixFusion, optimize your procurement workflow, and explore the full potential of our platform. From setup guides to advanced features, this documentation ensures a seamless journey with FelixFusion.
 
-You'll see some of the best parts of GitBook in action — and find help on how you can turn this template into your own.
+You'll discover how FelixFusion simplifies government contracting through AI-driven tools like automated compliance checks, proposal generation, and opportunity matching.
 
-### Jump right in
+### Jump Right In
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Create your first site</td><td></td><td></td><td><a href="broken-reference">Broken link</a></td></tr><tr><td><strong>Basics</strong></td><td>Learn the basics of GitBook</td><td></td><td></td><td><a href="broken-reference">Broken link</a></td></tr><tr><td><strong>Publish your docs</strong></td><td>Share your docs online</td><td></td><td></td><td><a href="broken-reference">Broken link</a></td></tr></tbody></table>
+#### 🚀 Getting Started
+
+Learn how to set up your profile and begin leveraging FelixFusion’s features for automated procurement success.
+
+\
+Get Started →
+
+***
+
+#### 📚 Basics
+
+Understand the core components of FelixFusion, including Opportunity Chat, Proposal Copilot, and Pipelines.
+
+\
+Learn the Basics →
+
+***
+
+#### 🌍 Publish Your Success
+
+Discover tips and tools to maximize your success with FelixFusion. Share your wins and experiences with your team.
+
+\
+See Features →
+
+***
+
+#### Next
+
+Introduction →
