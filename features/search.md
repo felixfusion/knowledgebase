@@ -12,8 +12,8 @@ FelixFusion leverages generative search to dynamically recommend the most releva
 
 To perform a filter search:
 
-1. Select any desired filter from the options provided.
-2. Leave the search bar empty and press **Enter**.
+1. Select any desired filter from the options provided
+2. Leave the search bar empty and press **Enter**
 
 For instance, if you wish to find all contracts designated under the 8A Set-Aside Code, select **8A** under Set Aside Codes, leave the search bar blank, and press **Enter**.
 
