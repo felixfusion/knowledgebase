@@ -1,16 +1,8 @@
 # Table of contents
 
-* [Welcome](README.md)
-  * [Introduction](readme/introduction.md)
-  * [Quickstart](readme/quickstart.md)
-
-## Features
-
-* [Profile](features/profile.md)
-* [Search](features/search.md)
-* [Opportunity Chat](features/opportunity-chat.md)
-* [Opportunities & Pipelines](features/opportunities-and-pipelines.md)
-* [Library](features/library.md)
-* [Schedules](features/schedules.md)
-* [Proposal Copilot](features/proposal-copilot.md)
-* [Prompting Guide](features/prompting-guide.md)
+* [Page](README.md)
+* [About](about.md)
+* [API reference](api-reference/README.md)
+  * [Tenders](api-reference/tenders/README.md)
+    * [Hubspot](api-reference/tenders/hubspot.md)
+* [Specification](https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5ld90xTqCJUE7U5p7W85%2Fimports%2FTJlVmgJWhMqz86kbU1cw%2FAPI_Tender.yml?alt=media\&token=960257c7-516a-4103-8f9b-c4ce172bc3ef)

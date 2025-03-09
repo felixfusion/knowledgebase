@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: "FelixFusion.ai Tenders API"
+  description: >
+    This API allows users to retrieve tender opportunities from FelixFusion.ai 
+    and optionally push those opportunities to HubSpot as leads.
+  version: "1.0.0"
+
+servers:
+  - url: "https://api.felixfusion.ai/v1"
+    description: Production server
+
+tags:
+  - name: "Tenders"
+    description: Endpoints for retrieving or searching for Tenders
+  - name: "HubSpot"
+    description: Endpoints for creating/updating leads in HubSpot from Tenders
+
+paths:
+  /tenders:
+    get:
+      tags: ["Tenders"]
+      summary: "Retrieve a list of tender opportunities"
+      operationId: "getTenders"
+      responses:
+        '200':
+          description: "List of tender opportunities"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: "An array of tender objects"
+                    items:
+                      $ref: "#/components/schemas/Tender"
+                  total:
+                    type: integer
+                    description: "Total number of tenders found"
+              examples:
+                sampleResponse:
+                  value:
+                    items:
+                      - id: "iAk5c5UBIVtxFvL4OzJy"
+                        type: "US_TENDER"
+                        noticeId: "6ec1e95e760f403e8040c35ac65956ef"
+                        solicitationNumber: "5-B176-Q-00335-00"
+                        title: "Inductively Coupled Plasma Optical Emission Spectroscopy"
+                        status: "active"
+                        placeOfPerformance: "Lemont, Illinois, 60439, UNITED STATES"
+                        dueDate: "2025-03-13T22:00:00.000Z"
+                        agency: "ENERGY, DEPARTMENT OF..."
+                        # ... other fields as needed
+                    total: 1
+
+  /tenders/{tenderId}:
+    get:
+      tags: ["Tenders"]
+      summary: "Retrieve a single tender by its ID"
+      operationId: "getTenderById"
+      parameters:
+        - name: "tenderId"
+          in: path
+          required: true
+          description: "Unique ID of the tender"
+          schema:
+            type: string
+            example: "iAk5c5UBIVtxFvL4OzJy"
+      responses:
+        '200':
+          description: "A single tender object"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tender"
+              examples:
+                singleTender:
+                  value:
+                    id: "iAk5c5UBIVtxFvL4OzJy"
+                    type: "US_TENDER"
+                    noticeId: "6ec1e95e760f403e8040c35ac65956ef"
+                    solicitationNumber: "5-B176-Q-00335-00"
+                    title: "Inductively Coupled Plasma Optical Emission Spectroscopy"
+                    status: "active"
+                    dueDate: "2025-03-13T22:00:00.000Z"
+                    agency: "ENERGY, DEPARTMENT OF..."
+                    # ... additional fields
+
+  /tenders/{tenderId}/hubspot:
+    post:
+      tags: ["Tenders", "HubSpot"]
+      summary: "Send a tender to HubSpot as a lead"
+      operationId: "sendTenderToHubspot"
+      parameters:
+        - name: "tenderId"
+          in: path
+          required: true
+          description: "Unique ID of the tender"
+          schema:
+            type: string
+            example: "iAk5c5UBIVtxFvL4OzJy"
+      requestBody:
+        required: true
+        description: "Information needed to create or update a lead in HubSpot"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hubspotContactEmail:
+                  type: string
+                  description: "Email of the contact for HubSpot"
+                firstName:
+                  type: string
+                  description: "First name of the contact"
+                lastName:
+                  type: string
+                  description: "Last name of the contact"
+            example:
+              hubspotContactEmail: "example@company.com"
+              firstName: "John"
+              lastName: "Doe"
+      responses:
+        '200':
+          description: "Tender successfully created/updated in HubSpot"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "Tender iAk5c5UBIVtxFvL4OzJy was added to HubSpot"
+        '400':
+          description: "Invalid request data"
+        '404':
+          description: "Tender not found"
+
+components:
+  schemas:
+    Tender:
+      type: object
+      description: "A single tender item from FelixFusion.ai"
+      properties:
+        id:
+          type: string
+          description: "Unique ID of the tender"
+          example: "iAk5c5UBIVtxFvL4OzJy"
+        type:
+          type: string
+          description: "Type of tender (e.g., US_TENDER, EU_TENDER)"
+          example: "US_TENDER"
+        noticeId:
+          type: string
+          description: "Official notice ID from the source"
+          example: "6ec1e95e760f403e8040c35ac65956ef"
+        solicitationNumber:
+          type: string
+          description: "Solicitation number"
+          example: "5-B176-Q-00335-00"
+        title:
+          type: string
+          description: "Descriptive title of the tender"
+          example: "Inductively Coupled Plasma Optical Emission Spectroscopy"
+        status:
+          type: string
+          description: "Current status of the tender"
+          example: "active"
+        placeOfPerformance:
+          type: string
+          description: "Place of performance or shipping"
+          example: "Lemont, Illinois"
+        dueDate:
+          type: string
+          format: date-time
+          description: "Deadline for submissions"
+          example: "2025-03-13T22:00:00.000Z"
+        agency:
+          type: string
+          description: "Agency or authority issuing the tender"
+          example: "ENERGY, DEPARTMENT OF..."
+        # ... add more fields as needed
+
+security: []
